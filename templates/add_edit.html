@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <!-- Левая часть: формы добавления -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <!-- Цветная шапка -->
+                <div class="bg-gradient-header-students text-white px-3 py-3 rounded-top">
+                    <h5 class="mb-0">Добавление записи</h5>
+                </div>
+                <div class="bg-white" style="height:10px;"></div>
+                <!-- Форма -->
+                <div class="p-3">
+                    <div class="mb-3">
+                        <label class="form-label">Выберите таблицу</label>
+                        <select id="add-table-select" class="form-select">
+                            <option value="students">Студенты</option>
+                            <option value="courses">Курсы</option>
+                            <option value="records">Записи</option>
+                        </select>
+                    </div>
+
+                    <!-- Форма студентов -->
+                    <form id="form-students" class="add-form">
+                        <div class="mb-2">
+                            <label>ФИО</label>
+                            <input id="student-fio" class="form-control" placeholder="Введите ФИО">
+                        </div>
+                        <div class="mb-2">
+                            <label>Дата рождения</label>
+                            <input id="student-dob" type="date" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label>Телефон</label>
+                            <input id="student-phone" class="form-control" placeholder="+7 ...">
+                        </div>
+                        <button id="student-add-btn" type="button" class="btn btn-success mt-2">+ Добавить запись</button>
+                        <button id="student-edit-btn" type="button" class="btn btn-primary mt-2 d-none">Сохранить изменения</button>
+                    </form>
+
+                    <!-- Форма курсов -->
+                    <form id="form-courses" class="add-form d-none">
+                        <div class="mb-2"><label>Название</label><input id="course-name" class="form-control"></div>
+                        <div class="mb-2"><label>Описание</label><textarea id="course-desc" class="form-control"></textarea></div>
+                        <div class="mb-2"><label>Преподаватель</label><input id="course-teacher" class="form-control"></div>
+                        <button id="course-add-btn" type="button" class="btn btn-success mt-2">+ Добавить запись</button>
+                        <button id="course-edit-btn" type="button" class="btn btn-primary mt-2 d-none">Сохранить изменения</button>
+                    </form>
+
+                    <!-- Форма записей -->
+                    <form id="form-records" class="add-form d-none">
+                        <div class="mb-2">
+                            <label>Студент</label>
+                            <select id="record-student" class="form-select"></select>
+                        </div>
+                        <div class="mb-2">
+                            <label>Курс</label>
+                            <select id="record-course" class="form-select"></select>
+                        </div>
+                        <div class="mb-2">
+                            <label>Дата</label>
+                            <input id="record-date" type="date" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label>Оценка</label>
+                            <select id="record-grade" class="form-select">
+                                <option value="">Не оценено</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <button id="record-add-btn" type="button" class="btn btn-success mt-2">+ Добавить запись</button>
+                        <button id="record-edit-btn" type="button" class="btn btn-primary mt-2 d-none">Сохранить изменения</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая часть: таблица -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <!-- Цветная шапка таблицы -->
+                <div class="bg-gradient-header-students text-white px-3 py-3 rounded-top">
+                    <h5 class="mb-0">Список записей выбранной таблицы</h5>
+                </div>
+                <div class="bg-white" style="height:10px;"></div>
+                <!-- Таблица -->
+                <div class="p-3 bg-light">
+                    <div id="add-table-list" class="table-responsive">
+                        <table class="table" id="add-list-table">
+                            <thead class="table-light"></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+/* static/css/styles.css */
+
+/* Header gradient style similar to screenshots */
+.bg-gradient-header {
+  background: linear-gradient(90deg, #3a7bd5 0%, #614acb 100%);
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.bg-gradient-header-students {
+  background: linear-gradient(90deg, #49cc66 0%, #1c734e 100%);
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.bg-gradient-header-courses {
+  background: linear-gradient(90deg, #b432e3 0%, #e332b1 100%);
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.bg-gradient-header-delete{
+ background: linear-gradient(90deg, #e82c39 0%, #a14248 100%);
+ padding: 20px;
+ border-radius: 8px 8px 0 0;
+}
+/* cards */
+.card {
+  border-radius: 12px;
+}
+
+/* highlighted nav buttons */
+.navbar .btn-warning {
+  background: #24b544 ;
+      color: white;
+}
+
+
+.navbar .btn-warning:hover {
+    background-color: #2fcc5e; /* чуть светлее при наведении */
+}
+
+
+
+/* table visuals */
+table.table tbody tr td {
+  vertical-align: middle;
+}
+
+/* pills for grades */
+.grade-pill {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:0.9rem;
+}
+/*Оценки, как подсвечиваются и их цвет*/
+.grade-5 { background:#e6f9ec; color:#1b8a3b; }
+.grade-4 { background:#eaf3ff; color:#2a6fb8; }
+.grade-3 { background:#fff6e6; color:#b86a1a; }
+.grade-2 { background:#ffebee; color:#b81a2a; }
+.grade-na { background:#f5f7fa; color:#6b6f76; }
+
+/* small visual tweaks */
+.container { max-width: 1150px; }

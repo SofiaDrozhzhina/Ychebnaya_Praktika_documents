@@ -1,0 +1,44 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm mb-4">
+    <div class="card-body bg-gradient-header text-white">
+        <h5 class="card-title">Записи студентов на курсы</h5>
+        <div class="row g-2 mt-3">
+            <div class="col-md-6">
+                <input id="records-search" type="search" class="form-control" placeholder="Поиск по студенту или курсу...">
+            </div>
+            <div class="col-md-3">
+                <select id="records-course-filter" class="form-select">
+                    <option value="">Все курсы</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="btn-group" role="group" aria-label="Sort">
+                    <button id="sort-default" class="btn btn-light active">По дате записи</button>
+                    <button id="sort-asc" class="btn btn-light">↑</button>
+                    <button id="sort-desc" class="btn btn-light">↓</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table mb-0" id="records-table">
+            <thead class="table-light">
+            <tr>
+                <th>Студент</th>
+                <th>Курс</th>
+                <th>Дата записи</th>
+                <th>Оценка</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Заполним через JS -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

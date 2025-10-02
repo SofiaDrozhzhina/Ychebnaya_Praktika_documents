@@ -1,0 +1,36 @@
+<!-- templates/students.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm mb-4">
+    <div class="card-body bg-gradient-header-students  text-white">
+        <h5 class="card-title">Студенты</h5>
+        <div class="row g-2 mt-3">
+            <div class="col-md-8">
+                <input id="students-search" type="search" class="form-control" placeholder="Поиск по ФИО...">
+            </div>
+            <div class="col-md-4">
+                <div class="btn-group" role="group" aria-label="Sort">
+                    <button id="students-sort-default" class="btn btn-light active">По дню рождения</button>
+                    <button id="students-sort-asc" class="btn btn-light">↑</button>
+                    <button id="students-sort-desc" class="btn btn-light">↓</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table mb-0" id="students-table">
+            <thead class="table-light">
+            <tr>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>Телефон</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

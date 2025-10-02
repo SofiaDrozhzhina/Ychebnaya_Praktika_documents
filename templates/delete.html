@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <!-- Левая часть: форма удаления -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <!-- Цветная шапка -->
+            <div class="card-body p-0">
+                <div class="bg-gradient-header-delete text-white px-3 py-3 rounded-top">
+                    <h5 class="mb-0">Удаление записи</h5>
+                </div>
+                <!-- Белый разделитель -->
+                <div class="bg-white" style="height:10px;"></div>
+                <!-- Контент: выбор таблицы и информация -->
+                <div class="p-3">
+                    <div class="mb-3">
+                        <label>Выберите таблицу</label>
+                        <select id="delete-table-select" class="form-select">
+                            <option value="students">Студенты</option>
+                            <option value="courses">Курсы</option>
+                            <option value="records">Записи</option>
+                        </select>
+                    </div>
+                    <div id="delete-info" class="p-3 bg-light rounded">
+                        Выберите запись справа для удаления
+                    </div>
+                    <button id="delete-confirm-btn" class="btn btn-danger mt-3 d-none">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая часть: таблица -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <!-- Шапка списка -->
+                <div class="bg-gradient-header-delete text-white px-3 py-3 rounded-top">
+                    <h5 class="mb-0">Список записей</h5>
+                </div>
+                <!-- Таблица -->
+                <div class="p-3 bg-light">
+                    <div class="table-responsive">
+                        <table class="table" id="delete-list-table">
+                            <thead class="table-light"></thead>
+                            <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
