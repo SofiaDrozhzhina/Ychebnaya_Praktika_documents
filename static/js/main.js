@@ -76,16 +76,24 @@ $(function() {
   }
 
   // --- Students table ---
-  function loadStudents(params={}) {
-    $.getJSON('/api/students', params).done(function(data) {
-      const tbody = $('#students-table tbody');
-      tbody.empty();
-      data.forEach(s => {
-        const row = `<tr data-id="${s.id}"><td>${s.fio}</td><td>${formatDate(s.date_of_birth)}</td><td>${s.phone || ''}</td></tr>`;
-        tbody.append(row);
-      });
-    });
-  }
+ function loadStudents(params={}) {
+   $.getJSON('/api/students', params).done(function(data) {
+     const tbody = $('#students-table tbody');
+     tbody.empty();
+     data.forEach(s => {
+       const row = `<tr data-id="${s.id}">
+         <td>${s.fio}</td>
+         <td>${formatDate(s.date_of_birth)}</td>
+         <td>${s.phone || ''}</td>
+         <td>
+           <a href="/documents/generate-word/${s.id}" class="btn btn-primary btn-sm" target="_blank">Word</a>
+           <a href="/pdf/generate-pdf/${s.id}" class="btn btn-danger btn-sm" target="_blank">PDF</a>
+         </td>
+       </tr>`;
+       tbody.append(row);
+     });
+   });
+ }
 
   // --- Courses table ---
   function loadCourses(params={}) {

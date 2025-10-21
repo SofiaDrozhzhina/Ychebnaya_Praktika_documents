@@ -1,20 +1,26 @@
 # app.py
 from flask import Flask, render_template
+from flask_cors import CORS
 from config import SECRET_KEY
 from models import init_db
-from api import api
-from flask_cors import CORS
+from api import api, documents_bp, excel_bp, pdf_bp  # твои CRUD-эндпоинты и генерация документов
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = SECRET_KEY
     CORS(app)
+
+    # Регистрируем blueprints
     app.register_blueprint(api)
+    app.register_blueprint(documents_bp)
+    app.register_blueprint(excel_bp)
+    app.register_blueprint(pdf_bp)
+
     return app
 
 app = create_app()
 
-# Инициализировать таблицы при старте (если нужно)
+# Инициализация таблиц
 with app.app_context():
     init_db()
 

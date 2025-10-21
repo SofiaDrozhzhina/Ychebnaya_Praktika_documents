@@ -1,19 +1,14 @@
-<!-- templates/students.html -->
 {% extends "base.html" %}
 {% block content %}
 <div class="card shadow-sm mb-4">
-    <div class="card-body bg-gradient-header-students  text-white">
+    <div class="card-body bg-gradient-header-students text-white">
         <h5 class="card-title">Студенты</h5>
         <div class="row g-2 mt-3">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <input id="students-search" type="search" class="form-control" placeholder="Поиск по ФИО...">
             </div>
-            <div class="col-md-4">
-                <div class="btn-group" role="group" aria-label="Sort">
-                    <button id="students-sort-default" class="btn btn-light active">По дню рождения</button>
-                    <button id="students-sort-asc" class="btn btn-light">↑</button>
-                    <button id="students-sort-desc" class="btn btn-light">↓</button>
-                </div>
+            <div class="col-md-6 text-end">
+                <button id="generate-excel" class="btn btn-success">Скачать Excel</button>
             </div>
         </div>
     </div>
@@ -27,10 +22,45 @@
                 <th>ФИО</th>
                 <th>Дата рождения</th>
                 <th>Телефон</th>
+                <th>Документы</th>
             </tr>
             </thead>
             <tbody></tbody>
         </table>
     </div>
 </div>
+
+<script>
+    async function loadStudents(search='') {
+    const res = await fetch('/api/students' + (search ? '?q=' + encodeURIComponent(search) : ''));
+    const students = await res.json();
+    const tbody = document.querySelector('#students-table tbody');
+    tbody.innerHTML = '';
+    students.forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${s.fio}</td>
+            <td>${s.date_of_birth}</td>
+            <td>${s.phone || ''}</td>
+            <td>
+                <a href="/documents/generate-word/${s.id}" class="btn btn-primary btn-sm" target="_blank">Word</a>
+                <a href="/pdf/generate-pdf/${s.id}" class="btn btn-warning btn-sm" target="_blank">PDF</a>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Поиск по ФИО
+const searchInput = document.getElementById('students-search');
+searchInput.addEventListener('input', () => loadStudents(searchInput.value));
+
+// Excel кнопка
+document.getElementById('generate-excel').addEventListener('click', () => {
+    window.location.href = '/excel/generate-excel';
+});
+
+// Загрузка при старте
+loadStudents();
+</script>
 {% endblock %}

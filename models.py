@@ -1,7 +1,8 @@
 # models.py
-from sqlalchemy import create_engine, Column, Integer, String, Date, Text, ForeignKey
+from sqlalchemy import (
+    create_engine, Column, Integer, String, Date, Text, ForeignKey, text
+)
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker, scoped_session
-
 from config import DATABASE_URI
 
 Base = declarative_base()
@@ -68,3 +69,8 @@ SessionLocal = scoped_session(sessionmaker(bind=engine, autocommit=False, autofl
 
 def init_db():
     Base.metadata.create_all(bind=engine)
+
+def get_students_data():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT fio, phone FROM students"))
+        return result.fetchall()

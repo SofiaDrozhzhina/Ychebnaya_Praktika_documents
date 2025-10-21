@@ -20,16 +20,24 @@
     {% elif request.path == '/delete' %}
       .nav-link.active { background-color: #ed6464;border-radius: 8px; }
     {% endif %}
+    /* Логотип в navbar */
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+    }
   </style>
-
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand {% if request.path == '/' %}active{% endif %}" href="/"><i class="bi bi-house"></i> Главная</a>
+    <a class="navbar-brand d-flex align-items-center {% if request.path == '/' %}active{% endif %}" href="/">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+      <span>Главная</span>
+    </a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link  {% if request.path == '/students' %}active{% endif %}" href="/students"><i class="bi bi-people"></i> Студенты</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path == '/students' %}active{% endif %}" href="/students"><i class="bi bi-people"></i> Студенты</a></li>
         <li class="nav-item"><a class="nav-link {% if request.path == '/courses' %}active{% endif %}" href="/courses"><i class="bi bi-book"></i> Курсы</a></li>
         <li class="nav-item"><a class="nav-link {% if request.path == '/add' %}active{% endif %}" href="/add"> + Добавление</a></li>
         <li class="nav-item"><a class="nav-link {% if request.path == '/delete' %}active{% endif %}" href="/delete"><i class="bi bi-trash"></i>  Удаление</a></li>
