@@ -1,8 +1,8 @@
 Запуск в Pycharm
 1. Созадйте вирутальное окружение и установите зависимости:
-   python -m venv venv
-   venv\Scripts\activate
-   pip install -r requirements.txt
+   1.1 python -m venv venv
+   1.2 venv\Scripts\activate
+   1.3 pip install -r requirements.txt
 
 
 Запуск через командную строку 
