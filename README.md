@@ -3,6 +3,7 @@
    1.1 python -m venv venv
    1.2 venv\Scripts\activate
    1.3 pip install -r requirements.txt
+   1.4 python app.py
 
 
 Запуск через командную строку 
