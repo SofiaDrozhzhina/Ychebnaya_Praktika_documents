@@ -1,5 +1,18 @@
-Flask==2.2.5
-SQLAlchemy>=2.0
-psycopg[binary]
-python-dotenv==1.0.0
-Flask-Cors==3.0.10
+# --- Основные зависимости ---
+Flask==2.2.5                # Веб-фреймворк
+Flask-Cors==3.0.10          # Поддержка CORS для API
+python-dotenv==1.0.0        # Загрузка переменных окружения (.env)
+
+# --- Работа с базой данных ---
+SQLAlchemy>=2.0              # ORM для Python
+psycopg[binary]              # Драйвер для PostgreSQL
+
+# --- Работа с Excel ---
+openpyxl==3.1.5              # Создание и редактирование Excel-файлов
+pandas==2.2.2                # Анализ и обработка данных
+
+# --- Работа с Word ---
+python-docx==1.1.2           # Создание .docx документов
+
+# --- Работа с PDF ---
+reportlab==4.2.5             # Генерация PDF-документов
